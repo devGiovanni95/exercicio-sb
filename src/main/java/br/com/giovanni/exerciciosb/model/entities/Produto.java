@@ -5,6 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 @Entity
 public class Produto {
 
@@ -12,10 +16,14 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank /*Nao pode ser um campo vazio*/
     private String nome;
 
+    @Min(0) /*Valor minimo de preco*/
     private double preco;
 
+    @Min(0)/*Valor minimo*/
+    @Max(1)/*Valor maximo*/
     private double desconto;
 
     public Produto() {
